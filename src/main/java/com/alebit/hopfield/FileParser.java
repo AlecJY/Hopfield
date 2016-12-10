@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Alec on 2016/12/10.
@@ -13,8 +14,8 @@ public class FileParser {
     int maxWidth;
     int maxHeight;
 
-    public ArrayList<int[][]> parseTrainingData(String path) {
-        ArrayList<int[][]> trainingData = new ArrayList<>();
+    public ArrayList<double[][]> parseTrainingData(String path) {
+        ArrayList<double[][]> trainingData = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             ArrayList<String> data = new ArrayList<>();
@@ -43,7 +44,10 @@ public class FileParser {
                 }
             }
             for (int i = 0; i < data.size();) {
-                int[][] datum = new int[maxHeight][maxWidth];
+                double[][] datum = new double[maxHeight][maxWidth];
+                for (int j = 0; j < datum.length; j++) {
+                    Arrays.fill(datum[j], -1);
+                }
                 for (int j = 0; j < maxHeight; j++) {
                     if (i + j < data.size()) {
                         for (int k = 0; k < maxWidth; k++) {
@@ -73,8 +77,8 @@ public class FileParser {
         return trainingData;
     }
 
-    public ArrayList<int[][]> parseTestingData(String path) {
-        ArrayList<int[][]> testingData = new ArrayList<>();
+    public ArrayList<double[][]> parseTestingData(String path) {
+        ArrayList<double[][]> testingData = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             ArrayList<String> data = new ArrayList<>();
@@ -88,7 +92,10 @@ public class FileParser {
                 }
             }
             for (int i = 0; i < data.size();) {
-                int[][] datum = new int[maxHeight][maxWidth];
+                double[][] datum = new double[maxHeight][maxWidth];
+                for (int j = 0; j < datum.length; j++) {
+                    Arrays.fill(datum[j], -1);
+                }
                 for (int j = 0; j < maxHeight; j++) {
                     if (i + j < data.size()) {
                         for (int k = 0; k < maxWidth; k++) {

@@ -46,9 +46,10 @@ public class InputForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 FileParser fileParser = new FileParser();
-                ArrayList<int[][]> trainingData = fileParser.parseTrainingData(trainingTextField.getText());
-                ArrayList<int[][]> testingData = fileParser.parseTestingData(testingTextField.getText());
-
+                ArrayList<double[][]> trainingData = fileParser.parseTrainingData(trainingTextField.getText());
+                ArrayList<double[][]> testingData = fileParser.parseTestingData(testingTextField.getText());
+                HopfieldNetwork hopfield = new HopfieldNetwork();
+                hopfield.training(trainingData);
             }
         });
     }
