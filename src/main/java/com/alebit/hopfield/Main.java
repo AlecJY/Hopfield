@@ -5,6 +5,7 @@ package com.alebit.hopfield;
  */
 public class Main {
     public static void main(String[] args) {
-        
+        InputForm inputForm = new InputForm();
+        inputForm.setVisible(true);
     }
 }
