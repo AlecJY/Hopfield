@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * Created by Alec on 2016/12/10.
@@ -45,7 +46,9 @@ public class InputForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 FileParser fileParser = new FileParser();
-                fileParser.parseTrainingData(trainingTextField.getText());
+                ArrayList<int[][]> trainingData = fileParser.parseTrainingData(trainingTextField.getText());
+                ArrayList<int[][]> testingData = fileParser.parseTestingData(testingTextField.getText());
+
             }
         });
     }

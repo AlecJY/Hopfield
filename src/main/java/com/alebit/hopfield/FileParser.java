@@ -10,12 +10,14 @@ import java.util.ArrayList;
  * Created by Alec on 2016/12/10.
  */
 public class FileParser {
-    public void parseTrainingData(String path) {
+    int maxWidth;
+    int maxHeight;
+
+    public ArrayList<int[][]> parseTrainingData(String path) {
+        ArrayList<int[][]> trainingData = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             ArrayList<String> data = new ArrayList<>();
-            int maxWidth = 0;
-            int maxHeight = 0;
             int height = 0;
             while (true) {
                 String line = reader.readLine();
@@ -40,11 +42,79 @@ public class FileParser {
                     }
                 }
             }
-
+            for (int i = 0; i < data.size();) {
+                int[][] datum = new int[maxHeight][maxWidth];
+                for (int j = 0; j < maxHeight; j++) {
+                    if (i + j < data.size()) {
+                        for (int k = 0; k < maxWidth; k++) {
+                            if (k < data.get(i + j).length()) {
+                                if (data.get(i + j).charAt(k) != ' ') {
+                                    datum[j][k] = 1;
+                                }
+                            } else {
+                                break;
+                            }
+                        }
+                    } else {
+                        break;
+                    }
+                }
+                trainingData.add(datum);
+                i = i + maxHeight + 1;
+                if (i + maxHeight < data.size() && !data.get(i + maxHeight).matches("\\A\\s*\\z")) {
+                    i++;
+                }
+            }
         } catch (FileNotFoundException e) {
 
         } catch (IOException e) {
 
         }
+        return trainingData;
+    }
+
+    public ArrayList<int[][]> parseTestingData(String path) {
+        ArrayList<int[][]> testingData = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            ArrayList<String> data = new ArrayList<>();
+            int height = 0;
+            while (true) {
+                String line = reader.readLine();
+                if (line == null) {
+                    break;
+                } else {
+                    data.add(line);
+                }
+            }
+            for (int i = 0; i < data.size();) {
+                int[][] datum = new int[maxHeight][maxWidth];
+                for (int j = 0; j < maxHeight; j++) {
+                    if (i + j < data.size()) {
+                        for (int k = 0; k < maxWidth; k++) {
+                            if (k < data.get(i + j).length()) {
+                                if (data.get(i + j).charAt(k) != ' ') {
+                                    datum[j][k] = 1;
+                                }
+                            } else {
+                                break;
+                            }
+                        }
+                    } else {
+                        break;
+                    }
+                }
+                testingData.add(datum);
+                i = i + maxHeight + 1;
+                if (i + maxHeight < data.size() && !data.get(i + maxHeight).matches("\\A\\s*\\z")) {
+                    i++;
+                }
+            }
+        } catch (FileNotFoundException e) {
+
+        } catch (IOException e) {
+
+        }
+        return testingData;
     }
 }
