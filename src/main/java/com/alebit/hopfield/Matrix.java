@@ -83,4 +83,49 @@ public class Matrix {
         }
         return new Matrix(sData);
     }
+
+    public double get(int i, int j) {
+        return data[i][j];
+    }
+
+    public void set(double value, int i, int j) {
+        data[i][j] = value;
+    }
+
+    public int getWidth() {
+        return data[0].length;
+    }
+
+    public Matrix clone() {
+        return new Matrix(data);
+    }
+
+    public void print() {
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                System.out.print(String.format("%.2f", data[i][j]) + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Matrix)) {
+            return false;
+        }
+
+        Matrix matrix = (Matrix) object;
+        if (data.length != matrix.data.length || data[0].length != matrix.data[0].length) {
+            return false;
+        }
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                if (data[i][j] != matrix.data[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

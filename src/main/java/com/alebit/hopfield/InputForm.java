@@ -50,6 +50,7 @@ public class InputForm extends JFrame {
                 ArrayList<double[][]> testingData = fileParser.parseTestingData(testingTextField.getText());
                 HopfieldNetwork hopfield = new HopfieldNetwork();
                 hopfield.training(trainingData);
+                hopfield.asynchronousTesting(testingData);
             }
         });
     }
