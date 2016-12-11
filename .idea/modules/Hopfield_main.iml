@@ -9,5 +9,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: com.intellij:forms_rt:7.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.seaglasslookandfeel:seaglasslookandfeel:0.2.1" level="project" />
+    <orderEntry type="library" name="Gradle: asm:asm-commons:3.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.jgoodies:forms:1.1-preview" level="project" />
+    <orderEntry type="library" name="Gradle: jdom:jdom:1.0" level="project" />
+    <orderEntry type="library" name="Gradle: asm:asm-tree:3.0" level="project" />
+    <orderEntry type="library" name="Gradle: asm:asm:3.0" level="project" />
   </component>
 </module>

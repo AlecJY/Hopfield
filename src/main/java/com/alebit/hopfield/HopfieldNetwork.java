@@ -25,7 +25,7 @@ public class HopfieldNetwork {
         threshold = memoryMatrix.multiply(new Matrix(m));
     }
 
-    public void testing(ArrayList<double[][]> testingData) {
+    public ArrayList<double[][]> testing(ArrayList<double[][]> testingData) {
         int dim = testingData.get(0).length * testingData.get(0)[0].length;
         Matrix[] testingMatrices = dataToMatrices(testingData);
         for (int index = 0; index < testingMatrices.length; index++) {
@@ -61,22 +61,10 @@ public class HopfieldNetwork {
             }
         }
         ArrayList<double[][]> result = matricesToData(testingData, testingMatrices);
-        for (double[][] data: result) {
-            for (int i = 0; i < data.length; i++) {
-                for (int j = 0; j < data[0].length; j++) {
-                    if (data[i][j] == 1) {
-                        System.out.print(1);
-                    } else {
-                        System.out.print(" ");
-                    }
-                }
-                System.out.println();
-            }
-            System.out.println();
-        }
+        return result;
     }
 
-    public void asynchronousTesting(ArrayList<double[][]> testingData) {
+    public ArrayList<double[][]> asynchronousTesting(ArrayList<double[][]> testingData) {
         int dim = testingData.get(0).length * testingData.get(0)[0].length;
         Matrix[] testingMatrices = dataToMatrices(testingData);
         for (int index = 0; index < testingMatrices.length; index++) {
@@ -108,19 +96,7 @@ public class HopfieldNetwork {
             }
         }
         ArrayList<double[][]> result = matricesToData(testingData, testingMatrices);
-        for (double[][] data: result) {
-            for (int i = 0; i < data.length; i++) {
-                for (int j = 0; j < data[0].length; j++) {
-                    if (data[i][j] == 1) {
-                        System.out.print(1);
-                    } else {
-                        System.out.print(" ");
-                    }
-                }
-                System.out.println();
-            }
-            System.out.println();
-        }
+        return result;
     }
 
     private Matrix[] dataToMatrices(ArrayList<double[][]> dataCollection) {

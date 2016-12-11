@@ -16,6 +16,7 @@ public class InputForm extends JFrame {
     private JButton trainingBrowseButton;
     private JButton testingBrowseButton;
     private JPanel mainPanel;
+    private JPanel resultPanel;
 
     public InputForm() {
         setTitle("Hopfield Network");
@@ -50,7 +51,12 @@ public class InputForm extends JFrame {
                 ArrayList<double[][]> testingData = fileParser.parseTestingData(testingTextField.getText());
                 HopfieldNetwork hopfield = new HopfieldNetwork();
                 hopfield.training(trainingData);
-                hopfield.asynchronousTesting(testingData);
+                ArrayList<double[][]> resultData = hopfield.testing(testingData);
+                ResultForm resultForm = new ResultForm(trainingData, testingData, resultData);
+                resultPanel.removeAll();
+                resultPanel.setLayout(new GridLayout());
+                resultPanel.add(resultForm.getPanel());
+                pack();
             }
         });
     }
