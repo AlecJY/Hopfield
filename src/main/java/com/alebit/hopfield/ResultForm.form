@@ -27,11 +27,12 @@
             <properties/>
             <border type="none"/>
             <children>
-              <scrollpane id="e4fdc">
+              <scrollpane id="e4fdc" binding="trainingScrollPane">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <autoscrolls value="false"/>
                   <horizontalScrollBarPolicy value="31"/>
                   <verticalScrollBarPolicy value="22"/>
                 </properties>
@@ -56,7 +57,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <scrollpane id="ea25b">
+              <scrollpane id="ea25b" binding="testingScrollPane">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -85,7 +86,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <scrollpane id="2a748">
+              <scrollpane id="2a748" binding="resultScrollPane">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>

@@ -124,4 +124,22 @@ public class FileParser {
         }
         return testingData;
     }
+
+    public ArrayList<double[][]> addNoise(ArrayList<double[][]> originalData, double probability) {
+        ArrayList<double[][]> noiseData = new ArrayList<>();
+        for (double[][] oldData: originalData) {
+            double[][] data = new double[oldData.length][oldData[0].length];
+            for (int i = 0; i < data.length; i++) {
+                for (int j = 0; j < data[0].length; j++) {
+                    if (Math.random() <= probability) {
+                        data[i][j] = oldData[i][j] * -1;
+                    } else {
+                        data[i][j] = oldData[i][j];
+                    }
+                }
+            }
+            noiseData.add(data);
+        }
+        return noiseData;
+    }
 }

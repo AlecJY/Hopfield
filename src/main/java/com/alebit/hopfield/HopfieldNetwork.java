@@ -37,7 +37,7 @@ public class HopfieldNetwork {
                     for (int j = 0; j < dim; j++) {
                         value += memoryMatrix.get(i, j) * testingMatrices[index].get(j, 0);
                     }
-                    value -= threshold.get(i, 0);
+                    // value -= threshold.get(i, 0);
                      if (value < 0) {
                         value = -1;
                     } else if (value > 0){
@@ -71,7 +71,8 @@ public class HopfieldNetwork {
             int sameCount = 0;
             Matrix lastMatrix = null;
             while (true) {
-                Matrix tmpMatrix = memoryMatrix.multiply(testingMatrices[index]).subtract(threshold);
+                // Matrix tmpMatrix = memoryMatrix.multiply(testingMatrices[index]).subtract(threshold);
+                Matrix tmpMatrix = memoryMatrix.multiply(testingMatrices[index]);
                 for (int i = 0; i < memoryMatrix.getWidth(); i++) {
                     if (tmpMatrix.get(i, 0) < 0) {
                         tmpMatrix.set(-1, i, 0);
